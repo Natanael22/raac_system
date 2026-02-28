@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <!-- Dummy XSD used for MVP compilation and structure -->
+    <xs:element name="mensagemTISS">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cabecalho" type="xs:string" minOccurs="0"/>
+                <xs:element name="prestadorParaOperadora" type="xs:string" minOccurs="0"/>
+                <xs:element name="epilogo" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
