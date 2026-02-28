@@ -11,7 +11,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate # Let Flyway handle migrations
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
@@ -49,7 +49,11 @@ jwt:
   # Base64 encoded private/public keys or path to keystore
   # For MVP we can load from a hardcoded base64 key or generate dynamically
   expirationMs: 1800000 # 30 min
-  refreshExpirationMs: 604800000 # 7 days
+  refreshExpirationMs: 86400000
+
+raac:
+  encryption:
+    key: ${RAAC_ENCRYPTION_KEY:12345678901234567890123456789012}
 
 server:
   port: 8080

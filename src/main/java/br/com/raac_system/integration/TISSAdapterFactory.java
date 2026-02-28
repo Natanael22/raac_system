@@ -8,10 +8,13 @@ public class TISSAdapterFactory {
 
     private final MockTISSAdapter mockAdapter;
     private final BradescoTISSAdapter bradescoAdapter;
+    private final UnimedTISSAdapter unimedAdapter;
 
-    public TISSAdapterFactory(MockTISSAdapter mockAdapter, BradescoTISSAdapter bradescoAdapter) {
+    public TISSAdapterFactory(MockTISSAdapter mockAdapter, BradescoTISSAdapter bradescoAdapter,
+            UnimedTISSAdapter unimedAdapter) {
         this.mockAdapter = mockAdapter;
         this.bradescoAdapter = bradescoAdapter;
+        this.unimedAdapter = unimedAdapter;
     }
 
     public TISSPort getAdapter(InsuranceConfig config) {
@@ -23,8 +26,7 @@ public class TISSAdapterFactory {
                 if ("BRADESCO".equalsIgnoreCase(config.getOperatorName())) {
                     return bradescoAdapter;
                 } else if ("UNIMED".equalsIgnoreCase(config.getOperatorName())) {
-                    // return unimedAdapter; (using mock for now)
-                    return mockAdapter;
+                    return unimedAdapter;
                 } else {
                     return mockAdapter;
                 }
