@@ -1,5 +1,7 @@
 package br.com.raac_system.entity;
 
+import java.time.LocalDateTime;
+
 import br.com.raac_system.entity.enums.InsuranceEnvironment;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -14,7 +16,7 @@ public class InsuranceConfig extends BaseEntity {
     @Column(nullable = false)
     private String operatorName;
 
-    @Column(length = 50)
+    @Column(nullable = false, length = 50)
     private String ansCode;
 
     private String wsUrl;
@@ -33,4 +35,26 @@ public class InsuranceConfig extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")
     private String certPasswordEncrypted;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
 }

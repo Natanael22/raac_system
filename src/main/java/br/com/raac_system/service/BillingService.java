@@ -17,7 +17,7 @@ import br.com.raac_system.security.TenantContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -103,7 +103,7 @@ public class BillingService {
                 .orElseThrow(() -> new RuntimeException("Batch not found"));
 
         batch.setStatus(BatchStatus.ENVIADO);
-        batch.setSubmittedAt(LocalDateTime.now());
+        // batch.setSubmittedAt(LocalDateTime.now());
         batchRepository.save(batch);
 
         // Submit via TISSPort Async...

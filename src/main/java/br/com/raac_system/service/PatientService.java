@@ -48,6 +48,8 @@ public class PatientService {
         patient.setPhone(request.getPhone());
         patient.setEmail(request.getEmail());
         patient.setProntuarioNumber(request.getProntuarioNumber());
+        // patient.setCreatedAt(LocalDateTime.now());
+        // patient.setUpdatedAt(LocalDateTime.now());
 
         Address address = new Address();
         address.setAddressStreet(request.getAddressStreet());

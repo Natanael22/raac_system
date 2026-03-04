@@ -82,6 +82,7 @@ br\com\raac_system\dto\response\PatientResponse$PatientResponseBuilder.class
 br\com\raac_system\entity\BaseEntity.class
 br\com\raac_system\integration\TISSPort.class
 br\com\raac_system\dto\request\LoginRequest.class
+br\com\raac_system\controller\DebugController.class
 br\com\raac_system\entity\enums\AppointmentOrigin.class
 br\com\raac_system\mapper\AppointmentMapperImpl.class
 br\com\raac_system\dto\response\LoginResponse$LoginResponseBuilder.class

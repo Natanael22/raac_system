@@ -17,6 +17,7 @@ public class PatientRequest {
 
     private String cpf;
     private String cns;
+    @NotNull(message = "Birth date is mandatory")
     private LocalDate birthDate;
 
     @NotNull(message = "Sex is mandatory")

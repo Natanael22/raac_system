@@ -14,6 +14,9 @@ public class DoctorRequest {
     @NotBlank(message = "CRM is mandatory")
     private String crm;
 
+    @NotBlank(message = "UF CRM is mandatory")
+    private String ufCrm;
+
     private String specialty;
 
     // Encrypted bank data

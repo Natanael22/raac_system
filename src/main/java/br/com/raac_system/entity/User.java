@@ -1,5 +1,10 @@
 package br.com.raac_system.entity;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import br.com.raac_system.entity.enums.UserRole;
 import br.com.raac_system.entity.enums.UserStatus;
 import jakarta.persistence.*;
@@ -40,4 +45,25 @@ public class User extends BaseEntity {
     private String photoUrl;
 
     private String twoFactorSecret;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

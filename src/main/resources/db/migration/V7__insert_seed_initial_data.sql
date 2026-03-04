@@ -18,11 +18,12 @@ VALUES (
     'd290f1ee-6c54-4b01-90e6-d701748f0851', 
     'Admin Raac', 
     'admin@raacsystem.com.br', 
-    '$2a$10$f3D6U0sS9o/bF7v38cAnV.d7O8LpS3lQh1xXk8WqB.t.bFm.s.u.u', 
+    '$2a$10$Lqz3mvpEsh8aXofvSxedY.jeHTvqbcNeiolehuWjyqduwfZW.13Mu', 
     'ADMIN', 
     'ACTIVE', 
     NOW(), 
     NOW()
 ) ON CONFLICT (id) DO UPDATE SET password_hash = EXCLUDED.password_hash;
+
 
 
