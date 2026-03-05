@@ -1,6 +1,7 @@
 package br.com.raac_system.dto.response;
 
 import br.com.raac_system.entity.Patient;
+import br.com.raac_system.entity.enums.EntityStatus;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class PatientResponse {
     private String prontuarioNumber;
     private LocalDate birthDate;
     private String phone;
+    private EntityStatus status;
 
     public static PatientResponse fromEntity(Patient patient) {
         return builder()
@@ -27,6 +29,7 @@ public class PatientResponse {
                 .prontuarioNumber(patient.getProntuarioNumber())
                 .birthDate(patient.getBirthDate())
                 .phone(patient.getPhone())
+                // .status(patient.getStatus())
                 .build();
     }
 }

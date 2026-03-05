@@ -18,6 +18,7 @@ br\com\raac_system\integration\TISSAdapterFactory$1.class
 br\com\raac_system\entity\Appointment.class
 br\com\raac_system\exception\ErrorResponse.class
 br\com\raac_system\service\PatientService.class
+br\com\raac_system\service\PatientInsuranceService.class
 br\com\raac_system\exception\TISSIntegrationException.class
 br\com\raac_system\task\AuthorizationTask.class
 br\com\raac_system\dto\request\RefreshRequest.class
@@ -29,6 +30,7 @@ br\com\raac_system\entity\enums\GuideStatus.class
 br\com\raac_system\controller\MedicalRecordController.class
 br\com\raac_system\dto\response\MedicalRecordResponse$MedicalRecordResponseBuilder.class
 br\com\raac_system\integration\TISSValidator.class
+br\com\raac_system\mapper\PatientInsuranceMapperImpl.class
 br\com\raac_system\config\OpenApiConfig.class
 br\com\raac_system\controller\AppointmentController.class
 br\com\raac_system\util\CryptoUtil.class
@@ -53,6 +55,8 @@ br\com\raac_system\repository\MedicalRecordRepository.class
 br\com\raac_system\mapper\MedicalRecordMapperImpl.class
 br\com\raac_system\entity\MedicalRecordFile.class
 br\com\raac_system\config\S3Config.class
+br\com\raac_system\dto\response\PatientInsuranceResponse.class
+br\com\raac_system\entity\enums\EntityStatus.class
 br\com\raac_system\dto\response\ValidationResponse.class
 br\com\raac_system\integration\MockTISSAdapter.class
 br\com\raac_system\entity\enums\Sex.class
@@ -60,6 +64,7 @@ br\com\raac_system\mapper\InsuranceConfigMapperImpl.class
 br\com\raac_system\dto\response\PatientResponse.class
 br\com\raac_system\dto\response\AppointmentResponse.class
 br\com\raac_system\mapper\MedicalRecordMapper.class
+br\com\raac_system\mapper\PatientInsuranceMapper.class
 br\com\raac_system\security\JwtAuthFilter.class
 br\com\raac_system\dto\response\LoginResponse.class
 br\com\raac_system\task\NotificationTask.class
@@ -82,9 +87,9 @@ br\com\raac_system\dto\response\PatientResponse$PatientResponseBuilder.class
 br\com\raac_system\entity\BaseEntity.class
 br\com\raac_system\integration\TISSPort.class
 br\com\raac_system\dto\request\LoginRequest.class
-br\com\raac_system\controller\DebugController.class
 br\com\raac_system\entity\enums\AppointmentOrigin.class
 br\com\raac_system\mapper\AppointmentMapperImpl.class
+br\com\raac_system\dto\request\PatientInsuranceRequest.class
 br\com\raac_system\dto\response\LoginResponse$LoginResponseBuilder.class
 br\com\raac_system\integration\AuthorizationResult.class
 br\com\raac_system\dto\response\LoginResponse$UserDto.class
@@ -108,6 +113,7 @@ br\com\raac_system\mapper\AppointmentMapper.class
 br\com\raac_system\controller\PatientController.class
 br\com\raac_system\security\CustomUserDetailsService.class
 br\com\raac_system\config\RedisConfig.class
+br\com\raac_system\controller\PatientInsuranceController.class
 br\com\raac_system\dto\response\InsuranceConfigResponse$InsuranceConfigResponseBuilder.class
 br\com\raac_system\entity\AuditLog.class
 br\com\raac_system\entity\MedicalRecord.class
@@ -117,7 +123,9 @@ br\com\raac_system\entity\BillingGuide.class
 br\com\raac_system\mapper\InsuranceConfigMapper.class
 br\com\raac_system\repository\PatientRepository.class
 br\com\raac_system\integration\AuthorizationResult$AuthorizationResultBuilder.class
+br\com\raac_system\repository\PatientInsuranceRepository.class
 br\com\raac_system\dto\response\LoginResponse$UserDto$UserDtoBuilder.class
+br\com\raac_system\dto\response\PatientInsuranceResponse$PatientInsuranceResponseBuilder.class
 br\com\raac_system\controller\AuthorizationController.class
 br\com\raac_system\dto\response\InsuranceConfigResponse.class
 br\com\raac_system\exception\DuplicateEntityException.class

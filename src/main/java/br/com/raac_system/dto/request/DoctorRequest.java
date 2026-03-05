@@ -1,5 +1,6 @@
 package br.com.raac_system.dto.request;
 
+import br.com.raac_system.entity.enums.EntityStatus;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,4 +24,6 @@ public class DoctorRequest {
     private String baBankCode;
     private String baAgency;
     private String baAccount;
+
+    private EntityStatus status;
 }

@@ -56,6 +56,29 @@ public class DoctorService {
         return doctorMapper.toDto(doctor);
     }
 
+    @Transactional
+    public DoctorResponse updateDoctor(UUID id, DoctorRequest request) {
+        Doctor doctor = doctorRepository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
+                .orElseThrow(() -> new EntityNotFoundException("Doctor not found"));
+
+        doctorMapper.updateEntityFromDto(request, doctor);
+
+        if (request.getBaAccount() != null && request.getBaAgency() != null) {
+            String combinedBankData = String.format("%s|%s|%s", request.getBaBankCode(), request.getBaAgency(),
+                    request.getBaAccount());
+            doctor.setBankAccountEncrypted(CryptoUtil.encrypt(combinedBankData, encryptionKey));
+        }
+
+        /*
+         * if (request.getStatus() != null) {
+         * doctor.setStatus(request.getStatus());
+         * }
+         */
+
+        doctor = doctorRepository.save(doctor);
+        return doctorMapper.toDto(doctor);
+    }
+
     public DoctorResponse getDoctor(UUID id) {
         Doctor doctor = doctorRepository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
                 .orElseThrow(() -> new EntityNotFoundException("Doctor not found"));

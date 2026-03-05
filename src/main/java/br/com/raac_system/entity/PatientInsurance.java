@@ -1,5 +1,6 @@
 package br.com.raac_system.entity;
 
+import br.com.raac_system.entity.enums.EntityStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,8 +32,9 @@ public class PatientInsurance extends BaseEntity {
     @Column(length = 50)
     private String accommodation;
 
-    @Column(nullable = false, length = 50)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private EntityStatus status = EntityStatus.ACTIVE;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

@@ -62,6 +62,38 @@ public class PatientService {
         return PatientResponse.fromEntity(patient);
     }
 
+    @Transactional
+    public PatientResponse updatePatient(UUID id, PatientRequest request) {
+        Patient patient = patientRepository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found"));
+
+        patient.setName(request.getName());
+        patient.setCpf(request.getCpf());
+        patient.setCns(request.getCns());
+        patient.setBirthDate(request.getBirthDate());
+        patient.setSex(request.getSex());
+        patient.setPhone(request.getPhone());
+        patient.setEmail(request.getEmail());
+        patient.setProntuarioNumber(request.getProntuarioNumber());
+
+        if (patient.getAddress() == null) {
+            patient.setAddress(new Address());
+        }
+        patient.getAddress().setAddressStreet(request.getAddressStreet());
+        patient.getAddress().setAddressNumber(request.getAddressNumber());
+        patient.getAddress().setAddressCity(request.getAddressCity());
+        patient.getAddress().setAddressState(request.getAddressState());
+
+        /*
+         * if (request.getStatus() != null) {
+         * patient.setStatus(request.getStatus());
+         * }
+         */
+
+        patient = patientRepository.save(patient);
+        return PatientResponse.fromEntity(patient);
+    }
+
     public PatientResponse getPatient(UUID id) {
         Patient patient = patientRepository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found"));

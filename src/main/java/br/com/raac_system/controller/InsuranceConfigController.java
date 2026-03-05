@@ -35,6 +35,13 @@ public class InsuranceConfigController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createConfig(request));
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<InsuranceConfigResponse> update(@PathVariable UUID id,
+            @Valid @RequestBody InsuranceConfigRequest request) {
+        return ResponseEntity.ok(service.updateConfig(id, request));
+    }
+
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<InsuranceConfigResponse> getById(@PathVariable UUID id) {

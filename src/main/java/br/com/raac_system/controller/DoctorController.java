@@ -35,6 +35,13 @@ public class DoctorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(doctorService.createDoctor(request));
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<DoctorResponse> updateDoctor(@PathVariable UUID id,
+            @Valid @RequestBody DoctorRequest request) {
+        return ResponseEntity.ok(doctorService.updateDoctor(id, request));
+    }
+
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'ATENDENTE')")
     public ResponseEntity<DoctorResponse> getDoctor(@PathVariable UUID id) {

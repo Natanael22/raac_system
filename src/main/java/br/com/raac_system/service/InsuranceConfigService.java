@@ -58,6 +58,31 @@ public class InsuranceConfigService {
         return mapper.toDto(config);
     }
 
+    @Transactional
+    public InsuranceConfigResponse updateConfig(UUID id, InsuranceConfigRequest request) {
+        InsuranceConfig config = repository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
+                .orElseThrow(() -> new EntityNotFoundException("Insurance Config not found"));
+
+        mapper.updateEntityFromDto(request, config);
+
+        if (request.getCredentials() != null && !request.getCredentials().isBlank()) {
+            config.setCredentialsEncrypted(CryptoUtil.encrypt(request.getCredentials(), encryptionKey));
+        }
+
+        if (request.getCertPassword() != null && !request.getCertPassword().isBlank()) {
+            config.setCertPasswordEncrypted(CryptoUtil.encrypt(request.getCertPassword(), encryptionKey));
+        }
+
+        /*
+         * if (request.getStatus() != null) {
+         * config.setStatus(request.getStatus());
+         * }
+         */
+
+        config = repository.save(config);
+        return mapper.toDto(config);
+    }
+
     public InsuranceConfigResponse getConfig(UUID id) {
         InsuranceConfig config = repository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
                 .orElseThrow(() -> new EntityNotFoundException("InsuranceConfig not found"));

@@ -2,6 +2,7 @@ package br.com.raac_system.entity;
 
 import java.time.LocalDateTime;
 
+import br.com.raac_system.entity.enums.EntityStatus;
 import br.com.raac_system.entity.enums.InsuranceEnvironment;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -35,6 +36,10 @@ public class InsuranceConfig extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")
     private String certPasswordEncrypted;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private EntityStatus status = EntityStatus.ACTIVE;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

@@ -7,11 +7,11 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\AuthController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\AuthorizationController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\BillingController.java
-C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\DebugController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\DoctorController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\InsuranceConfigController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\MedicalRecordController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\PatientController.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\controller\PatientInsuranceController.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\AppointmentRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\AuthorizationRequestDto.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\BatchRequest.java
@@ -20,6 +20,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\InsuranceConfigRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\LoginRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\MedicalRecordRequest.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\PatientInsuranceRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\PatientRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\request\RefreshRequest.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\AppointmentResponse.java
@@ -28,6 +29,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\respons
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\InsuranceConfigResponse.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\LoginResponse.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\MedicalRecordResponse.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\PatientInsuranceResponse.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\PatientResponse.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\dto\response\ValidationResponse.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\Address.java
@@ -43,6 +45,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enum
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\AppointmentType.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\AuthorizationStatus.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\BatchStatus.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\EntityStatus.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\GuideStatus.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\GuideType.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\entity\enums\InsuranceEnvironment.java
@@ -75,6 +78,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\Appo
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\DoctorMapper.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\InsuranceConfigMapper.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\MedicalRecordMapper.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\PatientInsuranceMapper.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\PatientMapper.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\mapper\UserMapper.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\RaacSystemApplication.java
@@ -84,6 +88,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\DoctorRepository.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\InsuranceConfigRepository.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\MedicalRecordRepository.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\PatientInsuranceRepository.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\PatientRepository.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\repository\UserRepository.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\security\CorsFilter.java
@@ -101,6 +106,7 @@ C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\Bil
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\DoctorService.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\InsuranceConfigService.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\MedicalRecordService.java
+C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\PatientInsuranceService.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\service\PatientService.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\task\AuthorizationTask.java
 C:\Projetos\antigravity\raac_system\src\main\java\br\com\raac_system\task\BillingTask.java
