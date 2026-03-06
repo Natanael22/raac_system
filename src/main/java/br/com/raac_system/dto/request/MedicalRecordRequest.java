@@ -16,5 +16,8 @@ public class MedicalRecordRequest {
     @NotBlank
     private String patientId;
 
+    private String chiefComplaint;
+    private String physicalExam;
+    private String plan;
     private String notes;
 }

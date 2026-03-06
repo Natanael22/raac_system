@@ -4,7 +4,6 @@ import br.com.raac_system.dto.request.PatientInsuranceRequest;
 import br.com.raac_system.dto.response.PatientInsuranceResponse;
 import br.com.raac_system.entity.Patient;
 import br.com.raac_system.entity.PatientInsurance;
-import br.com.raac_system.entity.enums.EntityStatus;
 import br.com.raac_system.exception.BusinessException;
 import br.com.raac_system.mapper.PatientInsuranceMapper;
 import br.com.raac_system.repository.PatientInsuranceRepository;
@@ -47,11 +46,9 @@ public class PatientInsuranceService {
         PatientInsurance insurance = mapper.toEntity(request);
         insurance.setPatient(patient);
         insurance.setTenant(patient.getTenant());
-        /*
-         * if (insurance.getStatus() == null) {
-         * insurance.setStatus(EntityStatus.ACTIVE);
-         * }
-         */
+        if (insurance.getStatus() == null) {
+            insurance.setStatus(br.com.raac_system.entity.enums.EntityStatus.ACTIVE);
+        }
 
         insurance = patientInsuranceRepository.save(insurance);
         return mapper.toDto(insurance);
@@ -65,11 +62,9 @@ public class PatientInsuranceService {
 
         mapper.updateEntityFromDto(request, insurance);
 
-        /*
-         * if (request.getStatus() != null) {
-         * insurance.setStatus(request.getStatus());
-         * }
-         */
+        if (request.getStatus() != null) {
+            insurance.setStatus(request.getStatus());
+        }
 
         insurance = patientInsuranceRepository.save(insurance);
         return mapper.toDto(insurance);

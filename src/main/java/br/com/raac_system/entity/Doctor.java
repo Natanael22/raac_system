@@ -37,6 +37,15 @@ public class Doctor extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String bankAccountEncrypted;
 
+    @Column(columnDefinition = "TEXT")
+    private String bankCode;
+
+    @Column(columnDefinition = "TEXT")
+    private String bankAgency;
+
+    @Column(columnDefinition = "TEXT")
+    private String bankAccount;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private EntityStatus status = EntityStatus.ACTIVE;

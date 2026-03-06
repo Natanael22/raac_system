@@ -19,16 +19,13 @@ public interface MedicalRecordMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "tenant", ignore = true)
-    @Mapping(target = "patient", ignore = true) // Setting manually in service
-    @Mapping(target = "doctor", ignore = true) // Setting manually in service
+    @Mapping(target = "patient", ignore = true)
+    @Mapping(target = "doctor", ignore = true)
     @Mapping(target = "diagnosis", source = "diagnosisJson")
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deletedAt", ignore = true)
     @Mapping(target = "appointment", ignore = true)
-    @Mapping(target = "chiefComplaint", ignore = true)
-    @Mapping(target = "physicalExam", ignore = true)
-    @Mapping(target = "plan", ignore = true)
     @Mapping(target = "signedAt", ignore = true)
     @Mapping(target = "signatureHash", ignore = true)
     MedicalRecord toEntity(MedicalRecordRequest request);
@@ -42,9 +39,6 @@ public interface MedicalRecordMapper {
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deletedAt", ignore = true)
     @Mapping(target = "appointment", ignore = true)
-    @Mapping(target = "chiefComplaint", ignore = true)
-    @Mapping(target = "physicalExam", ignore = true)
-    @Mapping(target = "plan", ignore = true)
     @Mapping(target = "signedAt", ignore = true)
     @Mapping(target = "signatureHash", ignore = true)
     void updateEntityFromDto(MedicalRecordRequest request, @MappingTarget MedicalRecord record);

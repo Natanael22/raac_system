@@ -19,11 +19,12 @@ public class DoctorRequest {
     private String ufCrm;
 
     private String specialty;
+    private String rqe;
 
-    // Encrypted bank data
-    private String baBankCode;
-    private String baAgency;
-    private String baAccount;
+    // Bank data (stored in plain columns on Doctor)
+    private String bankCode;
+    private String bankAgency;
+    private String bankAccount;
 
     private EntityStatus status;
 }

@@ -12,8 +12,14 @@ import java.util.UUID;
 @Builder
 public class DoctorResponse {
     private UUID id;
+    private String name;
     private String crm;
     private String ufCrm;
+    private String rqe;
     private String specialty;
+    // Bank data might be needed by the user viewing their own profile
+    private String bankCode;
+    private String bankAgency;
+    private String bankAccount;
     private EntityStatus status;
 }

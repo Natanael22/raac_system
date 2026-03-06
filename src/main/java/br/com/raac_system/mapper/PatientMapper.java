@@ -10,6 +10,10 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
 
+    @Mapping(source = "address.addressStreet", target = "addressStreet")
+    @Mapping(source = "address.addressNumber", target = "addressNumber")
+    @Mapping(source = "address.addressCity", target = "addressCity")
+    @Mapping(source = "address.addressState", target = "addressState")
     PatientResponse toDto(Patient patient);
 
     @Mapping(target = "id", ignore = true)
@@ -18,7 +22,6 @@ public interface PatientMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deletedAt", ignore = true)
-    @Mapping(target = "gender", ignore = true)
     @Mapping(target = "maritalStatus", ignore = true)
     @Mapping(target = "allergies", ignore = true)
     @Mapping(target = "bloodType", ignore = true)
@@ -30,7 +33,6 @@ public interface PatientMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deletedAt", ignore = true)
-    @Mapping(target = "gender", ignore = true)
     @Mapping(target = "maritalStatus", ignore = true)
     @Mapping(target = "allergies", ignore = true)
     @Mapping(target = "bloodType", ignore = true)

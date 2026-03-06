@@ -4,13 +4,14 @@ import br.com.raac_system.dto.request.DoctorRequest;
 import br.com.raac_system.dto.response.DoctorResponse;
 import br.com.raac_system.entity.Doctor;
 import br.com.raac_system.entity.Tenant;
+import br.com.raac_system.entity.enums.EntityStatus;
 import br.com.raac_system.exception.BusinessException;
 import br.com.raac_system.mapper.DoctorMapper;
 import br.com.raac_system.repository.DoctorRepository;
 import br.com.raac_system.security.TenantContext;
-import br.com.raac_system.util.CryptoUtil;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -45,12 +46,15 @@ public class DoctorService {
         Tenant tenantRef = new Tenant();
         tenantRef.setId(getTenantId());
         doctor.setTenant(tenantRef);
+        doctor.setStatus(EntityStatus.ACTIVE);
 
-        if (request.getBaAccount() != null && request.getBaAgency() != null) {
-            String combinedBankData = String.format("%s|%s|%s", request.getBaBankCode(), request.getBaAgency(),
-                    request.getBaAccount());
-            doctor.setBankAccountEncrypted(CryptoUtil.encrypt(combinedBankData, encryptionKey));
-        }
+        // Bank fields are NOT encrypted here; they pass through directly
+        if (request.getBankCode() != null)
+            doctor.setBankCode(request.getBankCode());
+        if (request.getBankAgency() != null)
+            doctor.setBankAgency(request.getBankAgency());
+        if (request.getBankAccount() != null)
+            doctor.setBankAccount(request.getBankAccount());
 
         doctor = doctorRepository.save(doctor);
         return doctorMapper.toDto(doctor);
@@ -58,22 +62,23 @@ public class DoctorService {
 
     @Transactional
     public DoctorResponse updateDoctor(UUID id, DoctorRequest request) {
+
         Doctor doctor = doctorRepository.findByIdAndTenantIdAndDeletedAtIsNull(id, getTenantId())
                 .orElseThrow(() -> new EntityNotFoundException("Doctor not found"));
 
         doctorMapper.updateEntityFromDto(request, doctor);
 
-        if (request.getBaAccount() != null && request.getBaAgency() != null) {
-            String combinedBankData = String.format("%s|%s|%s", request.getBaBankCode(), request.getBaAgency(),
-                    request.getBaAccount());
-            doctor.setBankAccountEncrypted(CryptoUtil.encrypt(combinedBankData, encryptionKey));
-        }
+        // Bank fields are NOT encrypted here; they pass through directly
+        if (request.getBankCode() != null)
+            doctor.setBankCode(request.getBankCode());
+        if (request.getBankAgency() != null)
+            doctor.setBankAgency(request.getBankAgency());
+        if (request.getBankAccount() != null)
+            doctor.setBankAccount(request.getBankAccount());
 
-        /*
-         * if (request.getStatus() != null) {
-         * doctor.setStatus(request.getStatus());
-         * }
-         */
+        if (request.getStatus() != null) {
+            doctor.setStatus(request.getStatus());
+        }
 
         doctor = doctorRepository.save(doctor);
         return doctorMapper.toDto(doctor);

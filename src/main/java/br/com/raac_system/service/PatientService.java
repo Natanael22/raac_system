@@ -48,8 +48,9 @@ public class PatientService {
         patient.setPhone(request.getPhone());
         patient.setEmail(request.getEmail());
         patient.setProntuarioNumber(request.getProntuarioNumber());
-        // patient.setCreatedAt(LocalDateTime.now());
-        // patient.setUpdatedAt(LocalDateTime.now());
+        patient.setStatus(request.getStatus() != null
+                ? request.getStatus()
+                : br.com.raac_system.entity.enums.EntityStatus.ACTIVE);
 
         Address address = new Address();
         address.setAddressStreet(request.getAddressStreet());
@@ -84,11 +85,9 @@ public class PatientService {
         patient.getAddress().setAddressCity(request.getAddressCity());
         patient.getAddress().setAddressState(request.getAddressState());
 
-        /*
-         * if (request.getStatus() != null) {
-         * patient.setStatus(request.getStatus());
-         * }
-         */
+        if (request.getStatus() != null) {
+            patient.setStatus(request.getStatus());
+        }
 
         patient = patientRepository.save(patient);
         return PatientResponse.fromEntity(patient);

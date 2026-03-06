@@ -45,6 +45,7 @@ public class InsuranceConfigService {
         Tenant tenantRef = new Tenant();
         tenantRef.setId(getTenantId());
         config.setTenant(tenantRef);
+        config.setStatus(br.com.raac_system.entity.enums.EntityStatus.ACTIVE);
 
         if (request.getCredentials() != null && !request.getCredentials().isBlank()) {
             config.setCredentialsEncrypted(CryptoUtil.encrypt(request.getCredentials(), encryptionKey));
@@ -73,11 +74,9 @@ public class InsuranceConfigService {
             config.setCertPasswordEncrypted(CryptoUtil.encrypt(request.getCertPassword(), encryptionKey));
         }
 
-        /*
-         * if (request.getStatus() != null) {
-         * config.setStatus(request.getStatus());
-         * }
-         */
+        if (request.getStatus() != null) {
+            config.setStatus(request.getStatus());
+        }
 
         config = repository.save(config);
         return mapper.toDto(config);

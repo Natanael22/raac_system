@@ -34,9 +34,6 @@ public class Patient extends BaseEntity {
     private Sex sex;
 
     @Column(length = 50)
-    private String gender;
-
-    @Column(length = 50)
     private String maritalStatus;
 
     @Column(length = 20)

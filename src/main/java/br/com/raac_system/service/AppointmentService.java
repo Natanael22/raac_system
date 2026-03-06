@@ -58,6 +58,12 @@ public class AppointmentService {
         appointment.setOrigin(request.getOrigin());
         appointment.setNotes(request.getNotes());
 
+        if (request.getInsuranceId() != null) {
+            br.com.raac_system.entity.PatientInsurance insuranceRef = new br.com.raac_system.entity.PatientInsurance();
+            insuranceRef.setId(request.getInsuranceId());
+            appointment.setInsurance(insuranceRef);
+        }
+
         appointment = appointmentRepository.save(appointment);
         return AppointmentResponse.fromEntity(appointment);
     }
