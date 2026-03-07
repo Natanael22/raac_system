@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -57,6 +58,8 @@ public class AppointmentService {
         appointment.setRoom(request.getRoom());
         appointment.setOrigin(request.getOrigin());
         appointment.setNotes(request.getNotes());
+        appointment.setCreatedAt(LocalDateTime.now());
+        appointment.setUpdatedAt(LocalDateTime.now());
 
         if (request.getInsuranceId() != null) {
             br.com.raac_system.entity.PatientInsurance insuranceRef = new br.com.raac_system.entity.PatientInsurance();

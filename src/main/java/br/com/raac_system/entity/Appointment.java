@@ -50,4 +50,5 @@ public class Appointment extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")
     private String notes;
+
 }
