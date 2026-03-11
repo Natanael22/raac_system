@@ -38,7 +38,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - redisdata:/data
+      - redisdata:/data   
 
   minio:
     image: minio/minio
@@ -58,7 +58,55 @@ services:
       - "1025:1025"
       - "8025:8025"
 
+  #evolution-api:
+  #  container_name: evolution_api
+  #  image: evoapicloud/evolution-api:v2.3.4
+  #  ports:
+  #    - "8081:8080"
+  #  environment:
+  #  # Configurações Gerais
+  #    - SERVER_URL=http://localhost:8081 # MUDAR AQUI
+  #    - DEL_INSTANCE=false
+  #    - PROVIDER_ENABLED=false
+  #    - PROVIDER_HOST=127.0.0.1
+  #    - PROVIDER_PORT=5656
+  #    - PROVIDER_PREFIX=evolution_v2
+  #    - CONFIG_SESSION_PHONE_CLIENT=Windows
+  #    - CONFIG_SESSION_PHONE_NAME=Chrome
+      # https://web.whatsapp.com/sw.js ->> client_revision OU 
+      # WhatsappWeb ->> Configurações ->> Ajuda ->> Versão
+      # - CONFIG_SESSION_PHONE_VERSION=2.3000.1023406265 
+  #    - QRCODE_LIMIT=30
+  #    - LANGUAGE=pt-BR
+      # Configurações Autenticação
+  #    - AUTHENTICATION_API_KEY=zv8RzICIiPYRs4Dv3UpgGEBdfmFaqxBn # GERAR ENC256 AQUI https://acte.ltd/utils/randomkeygen
+  #    - AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true
+    # Configurações Banco de Dados
+  #    - DATABASE_ENABLED=true
+  #    - DATABASE_PROVIDER=postgresql
+  #    - DATABASE_CONNECTION_URI=postgresql://postgres:postgres@postgres:5432/evolution_v2 # MUDAR AQUI
+  #    - DATABASE_CONNECTION_CLIENT_NAME=evolution_v2
+  #    - DATABASE_SAVE_DATA_INSTANCE=true # required
+  #    - DATABASE_SAVE_DATA_NEW_MESSAGE=false
+  #    - DATABASE_SAVE_MESSAGE_UPDATE=false
+  #    - DATABASE_SAVE_DATA_CONTACTS=true
+  #    - DATABASE_SAVE_DATA_CHATS=false
+  #    - DATABASE_SAVE_DATA_LABELS=true
+  #    - DATABASE_SAVE_DATA_HISTORIC=false
+      
+      # Configurações Redis
+  #    - CACHE_REDIS_ENABLED=true
+  #    - CACHE_REDIS_URI=redis://redis:6379/2 # CUIDAR AQUI
+  #    - CACHE_REDIS_PREFIX_KEY=evolution_v2
+  #    - CACHE_REDIS_SAVE_INSTANCES=true
+  #    - CACHE_LOCAL_ENABLED=false
+  #  restart: always    
+  #  volumes:
+  #    - evolution_instances:/evolution/instances
+
 volumes:
   pgdata:
   redisdata:
+#  redisdata_evolution:
   miniodata:
+#  evolution_instances:
